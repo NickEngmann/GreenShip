@@ -14,7 +14,7 @@
     },
     "content_scripts": [ {
        "all_frames": false,
-       "js": [ "jquery-3.4.1.min.js", "imbed.js" ],
+       "js": [ "jquery-3.4.1.min.js", "./popover/popover-imbed.js" ],
        "match_about_blank": false,
        "matches": [ "http://*/*", "https://*/*" ],
        "run_at": "document_end"
