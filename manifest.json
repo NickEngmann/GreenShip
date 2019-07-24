@@ -1,0 +1,36 @@
+{
+    "background": {
+       "scripts": [ "h0.js" ]
+    },
+    "browser_action": {
+       "default_icon": {
+          "16": "icons/greenship.png",
+          "19": "icons/greenship.png",
+          "32": "icons/greenship.png",
+          "38": "icons/greenship.png"
+       },
+       "default_popup": "popover/popover.html",
+       "default_title": "GreenShip"
+    },
+    "content_scripts": [ {
+       "all_frames": false,
+       "js": [ "jquery-3.4.1.min.js", "imbed.js" ],
+       "match_about_blank": false,
+       "matches": [ "http://*/*", "https://*/*" ],
+       "run_at": "document_end"
+    } ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "description": "Go Green and Save with GreenShip",
+    "icons": {
+       "128": "icons/greenship.png",
+       "16": "icons/greenship.png",
+       "48": "icons/greenship.png"
+    },
+    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC79mayLyuCYY/dyT7Ycr1sVBp9yHrY4mnogVEgu+sDT6+/A121Na+aTw6mFLD6LHgbgHt4fnQ2V/QwcfBSXRTSkGpgNsZAjnYs4/XzZQYKGltWT93EP9zXN1kGbtzfkPGzTakquCfOjbKtbAQKWh8ppzqLhWcRUn9g/PhU99F29QIDAQAB",
+    "manifest_version": 2,
+    "name": "GreenShip",
+    "permissions": [ "cookies", "storage", "unlimitedStorage", "webRequest", "webRequestBlocking", "http://*/*", "https://*/*" ],
+    "version": "11.5.0",
+    "web_accessible_resources": [ "images/*", "css/*", "fonts/*" ]
+ }
+ 

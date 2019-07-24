@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GreenShip</title>
+    <style>
+      body {
+        /* height: 400px; popovers have a max height of 600px */
+        width: 350px;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+      <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="../css/fontawesome_all.css">
+  </head>
+  <body>
+
+    <div class="container">
+        <div class="row bg-success text-white px-1">
+          <span>
+            <i class="fas fa-cube"></i>
+            GreenShip
+          </span>
+        </div>
+
+        <div class="row pt-4 px-4">
+          <h6>About to Buy Something?</h6>
+          <h7 class="py-2">Let's check out the environmental cost of your shipping options</h7>
+        </div>
+        <div id="savings-table" class="row bg-secondary " style="min-height:50px">
+            <!-- Actual Data in A Table here
+            It's going to be a series of mapped out rows per object that we are scraping -->
+        </div>
+        <div class="row px-4 pt-3 pb-3">
+            <h7>Choose Ground (5-7 days) to save the same amount of CO2 as driving 12 miles in your car</h7>
+        </div>
+    </div>
+
+  </body>
+  <script src="./popover-imbed.js"></script>
+</html>
