@@ -1,25 +1,27 @@
-// This array will contain all of the numbers you want to highlight
-// in no particular order
-var numberArray = [670,710,820,1000];
 
-numberArray.forEach(function(v){
-  // Without knowing exactly what the page looks like I will just show you 
-  // how to highlight just the numbers in question, but you could easily
-  // similarly highlight surrounding text as well
+// console.log("we in this?")       
+// try {
+//     console.log("comon fam")
 
-  var num = "(" + v + ")";
+//     var testTarget = parentDOM.getElementsByClassName("test")[0]; // the first element, as we wanted
+//     console.log(testTarget); //<p class="test">hello world 2</p>
+// }
+// catch(error) {
+//     // console.error(error);
+//     // expected output: ReferenceError: nonExistentFunction is not defined
+//     // Note - error messages will vary depending on browser
+// }
 
-  // Select the '<td>' that contains the number we are looking for
-  var td = $('td.col-question:contains('+num+')');
 
-  // Make sure that this number exists
-  if(td.length > 0){
-
-    // Now that we have it we need to single out the number and replace it
-    var span = td.html().replace(num,'<span class="highlight-num">'+num+'</span>');
-    var n = td.html(span);
-  }
-    // Now instead of '(1000)' we have
-    // '<span class="highlight-num">(1000)</span>'
-    // We will color it in the css file
+        
+$().ready(() => {      
+    console.log("content script ready");
+    var parentDOM = document.getElementById("spc-orders");
+    console.log(parentDOM)
+    // "a-row shipping-speed ship-option pointer no-scheduled-delivery a-touch-radio"
+    var test = parentDOM.getElementsByClassName("shipping-speed ship-option pointer")
+    console.log(test); 
+    for( var i = 0; i < test.length; i++) { 
+      console.log(i)
+    }
 });

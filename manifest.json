@@ -1,6 +1,6 @@
 {
     "background": {
-       "scripts": [ "h0.js" ]
+       "scripts": [ "background.js" ]
     },
     "browser_action": {
        "default_icon": {
@@ -16,7 +16,7 @@
        "all_frames": false,
        "js": [ "jquery-3.4.1.min.js", "./popover/popover-imbed.js" ],
        "match_about_blank": false,
-       "matches": [ "http://*/*", "https://*/*" ],
+       "matches": [ "https://www.amazon.com/gp/buy/spc/handlers/*" ],
        "run_at": "document_end"
     } ],
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
@@ -26,11 +26,10 @@
        "16": "icons/greenship.png",
        "48": "icons/greenship.png"
     },
-    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC79mayLyuCYY/dyT7Ycr1sVBp9yHrY4mnogVEgu+sDT6+/A121Na+aTw6mFLD6LHgbgHt4fnQ2V/QwcfBSXRTSkGpgNsZAjnYs4/XzZQYKGltWT93EP9zXN1kGbtzfkPGzTakquCfOjbKtbAQKWh8ppzqLhWcRUn9g/PhU99F29QIDAQAB",
     "manifest_version": 2,
     "name": "GreenShip",
-    "permissions": [ "cookies", "storage", "unlimitedStorage", "webRequest", "webRequestBlocking", "http://*/*", "https://*/*" ],
-    "version": "11.5.0",
+    "permissions": [ "cookies", "debugger", "storage", "unlimitedStorage", "webRequest", "webRequestBlocking", "http://*/*", "https://*/*" ],
+    "version": "1.1.0",
     "web_accessible_resources": [ "images/*", "css/*", "fonts/*" ]
  }
  
