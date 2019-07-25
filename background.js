@@ -20,8 +20,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             console.log(request)
         });
     }
-
-    console.log("runTime On Request")
+    console.log("runTime On Request");
 });
 
 /* request to toggle slider whenever browser icon clicked
@@ -35,4 +34,5 @@ chrome.browserAction.onClicked.addListener(function () {
             todo: "toggle"
         });
     })
+    console.log("browserAction on click");
 });
