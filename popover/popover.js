@@ -28,7 +28,7 @@ function emissionsTable(emissions) {
 
         // first column
         var firstColumn = document.createElement('div');
-        firstColumn.setAttribute('class', 'col-3 pr-0');
+        firstColumn.setAttribute('class', 'col-5 pr-0');
         // first column text
         var innerTextFirstColumn  = document.createElement('p');
         innerTextFirstColumn.setAttribute('class', 'text-standard');
@@ -40,7 +40,7 @@ function emissionsTable(emissions) {
         }
         // another column for the amount of lbs per C02
         var secondColumn = document.createElement('div');
-        secondColumn.setAttribute('class', 'col-9 to-da-right');
+        secondColumn.setAttribute('class', 'col-7 to-da-right');
         if(index == (emissions.length-1)){
           var num_dead_trees = 1;
         }
@@ -48,7 +48,7 @@ function emissionsTable(emissions) {
           num_dead_trees = (slowest_shipping_date - emissions[index].minimum_date)/2
         }
         for(var i = 0; i < num_dead_trees; i++ ){
-          secondColumn.innerHTML += '<img src="../icons/dead_tree.png" width="30px" >';
+          secondColumn.innerHTML += '<img src="../icons/dead_tree.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
         }
         
     
@@ -67,7 +67,7 @@ function emissionsTable(emissions) {
     var innerSuggestion = document.createElement('h7');
     innerSuggestion.setAttribute('class', 'text-standard');
 
-    innerSuggestion.innerHTML += 'Choose '+ emissions[(emissions.length-1)].delivery_type +' will cause ' + variation_ratio + 'x the C02 emissions. That\'s like cutting down '+ variation_ratio + 'x as many trees to get your package sooner.';
+    innerSuggestion.innerHTML += 'Choosing "'+ emissions[0].delivery_type +'" will cause ' + variation_ratio + 'x the C02 emissions. That\'s like cutting down '+ variation_ratio + 'x as many trees to get your package sooner.';
     emissionsSuggestion.appendChild(innerSuggestion);
     
   }
