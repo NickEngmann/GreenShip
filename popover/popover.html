@@ -5,10 +5,35 @@
     <title>GreenShip</title>
     <style>
       body {
-        /* height: 400px; popovers have a max height of 600px */
-        width: 350px;
+        width: 470px;
         padding: 0;
         margin: 0;
+      }
+      .red{
+        height: 100%;
+        width:50px;
+        flex-grow: 0;
+        display:inline-block;
+      }
+      .green{
+          height: 100%;
+          min-width:250px;
+          flex-grow: 1000;
+          display:inline-block;
+      }
+      .yellow{
+          height: 100%;
+          width: 100%;
+          display: flex;
+      }
+      .fixed-row{
+        width: 450px!important;
+      }
+      .text-standard{
+        font-size:14px;
+      }
+      .to-da-right{
+        text-align: right;
       }
     </style>
       <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
@@ -17,26 +42,32 @@
   <body>
 
     <div class="container">
-        <div class="row bg-success text-white px-1">
-          <span>
-            <i class="fas fa-cube"></i>
+        <div class="row text-white px-1 py-1" style="background-color:#20B566!important">
+          <div style="font-size:15px; padding-left: 20px;">
+              <img src="../icons/greenship.svg" width="20px" fill="white" >
             GreenShip
-          </span>
+          </div>
         </div>
 
         <div class="row pt-4 px-4">
-          <h6>About to Buy Something?</h6>
-          <h7 class="py-2">Let's check out the environmental cost of your shipping options</h7>
+          <h6 style="font-size:20px">About to Buy Something?</h6>
+          <h7 class="py-2 pb-3" style="font-size:14px">Let's check out the environmental cost of your shipping options</h7>
         </div>
-        <div id="savings-table" class="row bg-secondary " style="min-height:50px">
-            <!-- Actual Data in A Table here
-            It's going to be a series of mapped out rows per object that we are scraping -->
+        
+        <div id="savings-table" class="row px-4 pt-2" style="background-color:#F3F3F3!important">
+          
         </div>
-        <div class="row px-4 pt-3 pb-3">
-            <h7>Choose Ground (5-7 days) to save the same amount of CO2 as driving 12 miles in your car</h7>
+
+        <div class="yellow pt-3 pb-3">
+          <div class="red">
+              <img src="../icons/leaf_icon.svg" width="35px" fill="#20B566" >
+          </div>
+          <div id="final-blurb" class="green">            
+          </div>
         </div>
     </div>
 
   </body>
-  <script src="./popover-imbed.js"></script>
+  <script src="./content-script.js"></script>
+  <script src="./popover.js"></script>
 </html>

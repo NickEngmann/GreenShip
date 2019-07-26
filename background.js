@@ -11,16 +11,9 @@ chrome.runtime.onInstalled.addListener(function () {
     }
 });
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    if (request.todo == "showPageAction") {
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, function (tabs) {
-            console.log(request)
-        });
-    }
+chrome.runtime.onMessage.addListener(function (message) {
     console.log("runTime On Request");
+    chrome.storage.local.set({'emissionsTable': message });
 });
 
 /* request to toggle slider whenever browser icon clicked

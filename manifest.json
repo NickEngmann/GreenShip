@@ -14,7 +14,7 @@
     },
     "content_scripts": [ {
        "all_frames": false,
-       "js": [ "jquery-3.4.1.min.js", "./popover/popover-imbed.js" ],
+       "js": [ "jquery-3.4.1.min.js", "./content-script.js", "./popover/popover.js" ],
        "match_about_blank": false,
        "matches": [ "https://www.amazon.com/gp/buy/spc/handlers/*" ],
        "run_at": "document_end"
