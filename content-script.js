@@ -34,13 +34,18 @@ $().ready(() => {
         var maximum_date = undefined;
       }
 
-      // console.log(dates);
-
-      if(dates) {
+      console.log(dates);
+      if(dates =="Tomorrow"){
+        var minimum_date = 1;
+        var maximum_date = 1;
+        var date_range = 0;   
+      }
+      else if(dates) {
         // var dayRE = /\d(.=?)/gm;
         var dayRE = /\d([0-9]=?|)/gm;
         var dayArray = dates.match(dayRE);
-        // console.log(dayArray);
+        console.log("dayArray: ")
+        console.log(dayArray);
         
         if(dayArray) {
           // console.log("What is this variable" + dates);
@@ -127,7 +132,7 @@ $().ready(() => {
         else{
           var monetaryAmount = undefined;
         }
-        
+
         // console.log(monetaryAmount);
         console.log("What is in everything:" + everything)
         if(noDatesArray) {
@@ -153,7 +158,7 @@ $().ready(() => {
           // 
           if(deliveryPrimeArray){
             var delivery_type = deliveryPrimeArray[0].slice(1);
-            console.log(deliveryPrimeArray[0].slice(1));
+            console.log("Delivery Type: " + deliveryPrimeArray[0].slice(1));
           }
           else{
             var delivery_type = undefined;
