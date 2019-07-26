@@ -20,10 +20,10 @@ Discover how you can reduce your carbon footprint by choosing different shipping
 Prerequisite for running the extension: Enter/Open Amazon.com
 Also this is currently only working on Prime Amazon accounts
 
-There is 3 ways to search the item users want.
+### The Following are the steps:
 1. On the checkout page fill out all the appropriate information
-![](https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/amazon.png)
+![](https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/amazon.png =250x250)
 
 2. Refresh the page before confirming the checkout
 3. Click on the GreenShip Logo in the top right hand corner
-![](https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/greenship.png)
+![](https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/greenship.png =250x250)
