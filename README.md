@@ -22,8 +22,9 @@ Also this is currently only working on Prime Amazon accounts
 
 ### The Following are the steps:
 1. On the checkout page fill out all the appropriate information
-![](https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/amazon.png =250x250)
+
+<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/amazon.png" width="600px"/>
 
 2. Refresh the page before confirming the checkout
 3. Click on the GreenShip Logo in the top right hand corner
-![](https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/greenship.png =250x250)
+<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/greenship.png" width="400px"/>
