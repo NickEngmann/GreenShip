@@ -7,11 +7,12 @@ function emissionsTable(emissions) {
 
   // Emissions table
   var emissionsTable = document.getElementById('savings-table');
-  if(emissionsTable != null) {
+  if(emissionsTable != null && emissions) {
     // Calculate Tree Variation Ratio
     if (devmode) {
       console.log(emissions);
     }
+    
     var slowest_shipping_date = emissions[emissions.length-1].maximum_date
     var fastest_shipping_date = emissions[0].minimum_date
     var variation_ratio =  (slowest_shipping_date - fastest_shipping_date)/2;
@@ -80,6 +81,10 @@ function emissionsTable(emissions) {
     innerSuggestion.innerHTML += 'Choosing "'+ emissions[0].delivery_type +'" will cause ' + variation_ratio + 'x the C02 emissions. That\'s like cutting down '+ variation_ratio + 'x as many trees to get your package sooner.';
     emissionsSuggestion.appendChild(innerSuggestion);
     
+  }
+
+  else {
+    console.log("ERROR 893: Emissions json not found, check in background.js or content-script.js");
   }
 
 }

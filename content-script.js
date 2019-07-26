@@ -3,18 +3,18 @@ var deliveryOptionsArray = [];
 var dateConverter = {
   Jul: 6,
   Aug: 7,
-  Sep: 8,
+  Sept: 8,
   Oct: 9,
   Nov: 10,
   Dec: 11
 }
 var dateConverterFull = {
   July: 6,
-  August: 7,
-  September: 8,
-  October: 9,
-  November: 10,
-  December: 11
+  Aug: 7,
+  Sept: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11
 }
 
 $().ready(() => {      
@@ -55,44 +55,65 @@ $().ready(() => {
           var monthRE = /[A-Z][a-z]+[.]/gm;
           var monthArray = dates.match(monthRE);
           if (devmode){
+            console.log("Month Array:")
             console.log(monthArray);
           }
-          if(monthArray) {
-            var minimumMonth = dateConverter[monthArray[0].slice(0, -1)]
-            var maximumMonth = dateConverter[monthArray[1].slice(0, -1)]
-            if (devmode) {
-              console.log("Minimum Month= "+ minimumMonth)
-              console.log("Maximum Month= "+maximumMonth)
-            }
+          if(monthArray != null) {
+            if(monthArray.length == 2){
+              var minimumMonth = dateConverter[monthArray[0].slice(0, -1)]
+              var maximumMonth = dateConverter[monthArray[1].slice(0, -1)]
+              if (devmode) {
+                console.log("Minimum Month= "+ minimumMonth)
+                console.log("Maximum Month= "+maximumMonth)
+              }
 
-            var minimumdateObject = new Date(
+              var minimumdateObject = new Date(
+                  2019,
+                  minimumMonth, // Careful, month starts at 0!
+                  dayArray[0],
+                  01,
+                  02,
+                  03
+              );
+
+              var minimum_date = parseInt((minimumdateObject - today)/(24*3600*1000))
+              
+              if (devmode) {
+                console.log(minimumdateObject);
+                console.log("minimum date: "+ minimum_date);
+                console.log("Maximum Month: " + maximumMonth)
+                console.log("maximum Day: " + dayArray[1])
+              }
+              var maximumdateObject = new Date(
                 2019,
-                minimumMonth, // Careful, month starts at 0!
-                dayArray[0],
+                maximumMonth,
+                dayArray[1],
                 01,
                 02,
                 03
-            );
+              );
 
-            var minimum_date = parseInt((minimumdateObject - today)/(24*3600*1000))
-            
-            if (devmode) {
-              console.log(minimumdateObject);
-              console.log("minimum date: "+ minimum_date);
-              console.log("Maximum Month: " + maximumMonth)
-              console.log("maximum Day: " + dayArray[1])
+              var maximum_date = parseInt((maximumdateObject-today)/(24*3600*1000))
+              var date_range = maximum_date - minimum_date;
             }
-            var maximumdateObject = new Date(
-              2019,
-              maximumMonth,
-              dayArray[1],
-              01,
-              02,
-              03
-            );
+            else if(monthArray.length == 1) {
+              var minimumMonth = dateConverter[monthArray[0].slice(0, -1)]
+              if (devmode) {
+                console.log("Solo Month= "+ minimumMonth)
+              }
+              var minimumdateObject = new Date(
+                  2019,
+                  minimumMonth, 
+                  dayArray[0],
+                  01,
+                  02,
+                  03
+              );
 
-            var maximum_date = parseInt((maximumdateObject-today)/(24*3600*1000))
-            var date_range = maximum_date - minimum_date;
+              var minimum_date = parseInt((minimumdateObject - today)/(24*3600*1000))
+              var maximum_date = minimum_date;
+              var date_range =  0;
+            }
           }
 
           else {
