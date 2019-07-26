@@ -28,8 +28,8 @@
     },
     "manifest_version": 2,
     "name": "GreenShip",
-    "permissions": [ "cookies", "tabs", "debugger", "storage", "unlimitedStorage", "webRequest", "webRequestBlocking", "https://www.amazon.com/gp/buy/spc/handlers/*", "http://www.amazon.com/gp/buy/spc/handlers/*" ],
-    "version": "1.1.2",
+    "permissions": [ "cookies", "tabs", "debugger", "storage", "unlimitedStorage", "webRequest", "webRequestBlocking", "https://www.amazon.com/*", "http://www.amazon.com/*" ],
+    "version": "1.1.3",
     "web_accessible_resources": [ "images/*", "css/*", "fonts/*" ]
  }
  

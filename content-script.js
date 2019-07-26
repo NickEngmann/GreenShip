@@ -16,9 +16,9 @@ var dateConverterFull = {
   November: 10,
   December: 11
 }
-var devmode = false;
 
 $().ready(() => {      
+    var devmode = true;
     var parentDOM = document.getElementById("spc-orders");
     var innerDOM = parentDOM.getElementsByClassName("a-radio-label");
     today = new Date();
