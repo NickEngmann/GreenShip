@@ -24,6 +24,7 @@ $().ready(() => {
     today = new Date();
 
     for( var index = 0; index < innerDOM.length; index++ ) {
+      var business_day_case = false;
       if (devmode){
         console.log(index)
       }
@@ -119,23 +120,33 @@ $().ready(() => {
           else {
             var monthRE = /[A-Z][a-z]+[\s]/gm;
             var month = dates.match(monthRE);
-            var minimumMonth = dateConverterFull[month[0].slice(0,-1)];
+            if(month != null) {
+              var minimumMonth = dateConverterFull[month[0].slice(0,-1)];
 
-            var minimumdateObject = new Date(
-                2019,
-                minimumMonth,
-                dayArray[0],
-                01,
-                02,
-                03
-            );
+              var minimumdateObject = new Date(
+                  2019,
+                  minimumMonth,
+                  dayArray[0],
+                  01,
+                  02,
+                  03
+              );
 
-            var minimum_date = parseInt((minimumdateObject-today)/(24*3600*1000))
-            var maximum_date = minimum_date;
-            var date_range = 0;    
-            if (devmode){
-              console.log("Months:" + month);
-              console.log(minimumdateObject);
+              var minimum_date = parseInt((minimumdateObject-today)/(24*3600*1000))
+              var maximum_date = minimum_date;
+              var date_range = 0;    
+              if (devmode){
+                console.log("Months:" + month);
+                console.log(minimumdateObject);
+              }
+            }
+            else{
+              console.log("business day case");
+              console.log("dates left:" + dates);
+              var minimum_date = dayArray[0];
+              var maximum_date = dayArray[1];
+              var date_range = maximum_date - minimum_date;
+              business_day_case = true;
             }   
           }
         }
@@ -211,7 +222,8 @@ $().ready(() => {
         maximum_date: maximum_date,
         date_range: date_range,
         money: monetaryAmount,
-        delivery_type: delivery_type
+        delivery_type: delivery_type,
+        business_day_case: business_day_case
       };
       if (devmode) {
         console.log(obj);

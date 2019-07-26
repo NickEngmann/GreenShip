@@ -7,12 +7,13 @@ function emissionsTable(emissions) {
 
   // Emissions table
   var emissionsTable = document.getElementById('savings-table');
-  if(emissionsTable != null && emissions) {
+
+  if(emissionsTable != null && emissions != null) {
     // Calculate Tree Variation Ratio
     if (devmode) {
       console.log(emissions);
     }
-    
+
     var slowest_shipping_date = emissions[emissions.length-1].maximum_date
     var fastest_shipping_date = emissions[0].minimum_date
     var variation_ratio =  (slowest_shipping_date - fastest_shipping_date)/2;
@@ -36,11 +37,22 @@ function emissionsTable(emissions) {
         // first column text
         var innerTextFirstColumn  = document.createElement('p');
         innerTextFirstColumn.setAttribute('class', 'text-standard');
-        if(emissions[index].date_range != 0) {    
-          innerTextFirstColumn.innerHTML += emissions[index].delivery_type +" (" + emissions[index].minimum_date +"-"+ emissions[index].maximum_date+" days)";
+
+        if(emissions[index].business_day_case == false) {
+          if(emissions[index].date_range != 0 ) {    
+            innerTextFirstColumn.innerHTML += emissions[index].delivery_type +" (" + emissions[index].minimum_date +"-"+ emissions[index].maximum_date+" days)";
+          }
+          else{
+            innerTextFirstColumn.innerHTML += emissions[index].delivery_type +" (" + emissions[index].minimum_date + " days)";
+          }
         }
         else{
-          innerTextFirstColumn.innerHTML += emissions[index].delivery_type +" (" + emissions[index].minimum_date + " days)";
+          if(emissions[index].date_range != 0 ) {    
+            innerTextFirstColumn.innerHTML += emissions[index].delivery_type +" (" + emissions[index].minimum_date +"-"+ emissions[index].maximum_date+" business days once shipped)";
+          }
+          else{
+            innerTextFirstColumn.innerHTML += emissions[index].delivery_type +" (" + emissions[index].minimum_date + " business days once shipped)";
+          }   
         }
         // another column for the amount of lbs per C02
         var secondColumn = document.createElement('div');
@@ -67,9 +79,7 @@ function emissionsTable(emissions) {
     
         firstColumn.appendChild(innerTextFirstColumn);
         content.appendChild(firstColumn);
-
         content.appendChild(secondColumn);
-
         emissionsTable.appendChild(content);
       }
     };
@@ -81,10 +91,6 @@ function emissionsTable(emissions) {
     innerSuggestion.innerHTML += 'Choosing "'+ emissions[0].delivery_type +'" will cause ' + variation_ratio + 'x the C02 emissions. That\'s like cutting down '+ variation_ratio + 'x as many trees to get your package sooner.';
     emissionsSuggestion.appendChild(innerSuggestion);
     
-  }
-
-  else {
-    console.log("ERROR 893: Emissions json not found, check in background.js or content-script.js");
   }
 
 }
