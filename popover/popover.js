@@ -1,25 +1,28 @@
 
   'use strict';
 
+var devmode = false;
 
 function emissionsTable(emissions) {
-
-  //Need to order the emissions table by days
-  //
 
   // Emissions table
   var emissionsTable = document.getElementById('savings-table');
   if(emissionsTable != null) {
     // Calculate Tree Variation Ratio
-    console.log(emissions);
+    if (devmode) {
+      console.log(emissions);
+    }
     var slowest_shipping_date = emissions[emissions.length-1].maximum_date
-    console.log(slowest_shipping_date)
     var fastest_shipping_date = emissions[0].minimum_date
-    console.log(fastest_shipping_date)
     var variation_ratio =  (slowest_shipping_date - fastest_shipping_date)/2;
-    console.log(variation_ratio);
+
+    if(devmode) {
+      console.log("Slowest Ship Date: " + slowest_shipping_date)
+      console.log("Fastest Ship Date: " + fastest_shipping_date)
+    }
+
     for (var index = (emissions.length-1); index >= 0; index--  ) {
-      // console.log("Hello World");
+
       if(emissions[index].delivery_type) {
         // How to go from multiple images
 
@@ -41,21 +44,29 @@ function emissionsTable(emissions) {
         // another column for the amount of lbs per C02
         var secondColumn = document.createElement('div');
         secondColumn.setAttribute('class', 'col-7 to-da-right');
+        var overflowFlag = false;
         if(index == (emissions.length-1)){
           var num_dead_trees = 1;
         }
         else{
           num_dead_trees = (slowest_shipping_date - emissions[index].minimum_date)/2
+          
+          if(num_dead_trees > 9){
+            num_dead_trees = 9;
+            overflowFlag = true;
+          }
         }
         for(var i = 0; i < num_dead_trees; i++ ){
           secondColumn.innerHTML += '<img src="../icons/dead_tree.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
+        }
+        if(overflowFlag){
+          secondColumn.innerHTML += '<img src="../icons/red-plus.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
         }
         
     
         firstColumn.appendChild(innerTextFirstColumn);
         content.appendChild(firstColumn);
 
-        // console.log(secondColumn)
         content.appendChild(secondColumn);
 
         emissionsTable.appendChild(content);
