@@ -9,12 +9,12 @@
           "32": "icons/greenship.png",
           "38": "icons/greenship.png"
        },
-       "default_popup": "popover/popover.html",
+       "default_popup": "popup/popup.html",
        "default_title": "GreenShip"
     },
     "content_scripts": [ {
        "all_frames": false,
-       "js": [ "jquery-3.4.1.min.js", "./content-script.js", "./popover/popover.js" ],
+       "js": [ "jquery-3.4.1.min.js", "./content-script.js", "./popup/popup.js" ],
        "match_about_blank": false,
        "matches": [ "https://www.amazon.com/gp/buy/spc/handlers/*" ],
        "run_at": "document_end"
@@ -28,7 +28,7 @@
     },
     "manifest_version": 2,
     "name": "GreenShip",
-    "permissions": [ "cookies", "debugger", "storage", "unlimitedStorage", "webRequest", "webRequestBlocking", "http://*/*", "https://*/*" ],
+    "permissions": [ "cookies", "tabs", "debugger", "storage", "unlimitedStorage", "webRequest", "webRequestBlocking", "http://*/*", "https://*/*" ],
     "version": "1.1.1",
     "web_accessible_resources": [ "images/*", "css/*", "fonts/*" ]
  }
