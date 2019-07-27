@@ -261,7 +261,7 @@ $().ready(() => {
         parentContainerChildTitleRowChildFont.setAttribute("style","font-size:15px; padding-left: 20px;")
           //image
           titleImageElement = document.createElement("img"); 
-          titleImageElement.src = chrome.extension.getURL("https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/greenship.png");
+          titleImageElement.src = chrome.extension.getURL("https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/greenship-brand.png");
           titleImageElement.setAttribute("fill", "white")
           titleImageElement.setAttribute("width", "20px")
         
