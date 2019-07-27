@@ -236,4 +236,41 @@ $().ready(() => {
       console.log(deliveryOptionsArray);
     }
     chrome.runtime.sendMessage({ deliveryOptionsArray});
+
+    // Embed Modal
+    wrapperDiv = document.createElement("div");
+    wrapperDiv.setAttribute("id","iframe-wrapper");
+    wrapperDiv.setAttribute("style","position: absolute; left: 0px; top: 0px; z-index: 2000; height: 1083px; width: 100%;");
+    wrapperDiv.setAttribute("onclick","document.getElementById(\"iframe-wrapper\").style.display = \"none\"")
+
+    modalDialogParentDiv = document.createElement("div");
+    modalDialogParentDiv.setAttribute("id","popover-greenship");
+    modalDialogParentDiv.setAttribute("style","position: absolute; width: 470px; height: 300px; border: 1px solid rgb(51, 102, 153); padding: 10px; background-color: rgb(255, 255, 255); z-index: 2010; overflow: auto; text-align: center; top: 28px; right: 28px;");
+    modalDialogParentDiv.innerHTML += "<button style=\'position: absolute; width: 25px; height: 25px; top: 8px; font-size: 13px; right: 8px;\' onclick=\'document.getElementById(\"popover-greenship\").style.display = \"none\"\'>✖️</button>"
+    
+    modalDialogSiblingDiv = document.createElement("div");
+
+    modalDialogTextDiv = document.createElement("div"); 
+    modalDialogTextDiv.setAttribute("style" , "text-align:center");
+    
+    // put elements that are currently in popupjs/popuphtml here
+    modalDialogTextSpan = document.createElement("span"); 
+    modalDialogText = document.createElement("strong"); 
+    modalDialogText.innerHTML = "Processing...  Please Wait.";
+
+    breakElement = document.createElement("br"); 
+    imageElement = document.createElement("img"); 
+    imageElement.src = chrome.extension.getURL("https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/amazon.png");
+
+    modalDialogTextSpan.appendChild(modalDialogText);
+    modalDialogTextDiv.appendChild(modalDialogTextSpan);
+    modalDialogTextDiv.appendChild(breakElement);
+    modalDialogTextDiv.appendChild(breakElement);
+    modalDialogTextDiv.appendChild(imageElement);
+
+    modalDialogSiblingDiv.appendChild(modalDialogTextDiv);
+    modalDialogParentDiv.appendChild(modalDialogSiblingDiv);
+    wrapperDiv.appendChild(modalDialogParentDiv);
+    document.body.appendChild(wrapperDiv);
+    
 });
