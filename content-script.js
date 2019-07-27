@@ -245,31 +245,158 @@ $().ready(() => {
 
     modalDialogParentDiv = document.createElement("div");
     modalDialogParentDiv.setAttribute("id","popover-greenship");
-    modalDialogParentDiv.setAttribute("style","position: absolute; width: 470px; height: 300px; border: 1px solid rgb(51, 102, 153); padding: 10px; background-color: rgb(255, 255, 255); z-index: 2010; overflow: auto; text-align: center; top: 28px; right: 28px;");
-    modalDialogParentDiv.innerHTML += "<button style=\'position: absolute; width: 25px; height: 25px; top: 8px; font-size: 13px; right: 8px;\' onclick=\'document.getElementById(\"popover-greenship\").style.display = \"none\"\'>✖️</button>"
+    modalDialogParentDiv.setAttribute("style","position: absolute; width: 470px; border: 1px solid #20B566!important; background-color: rgb(255, 255, 255); z-index: 2010; text-align: center; top: 28px; right: 28px;");
+    //removed button
+    // modalDialogParentDiv.innerHTML += "<button style=\'position: absolute; width: 25px; height: 25px; top: 8px; font-size: 13px; right: 8px;\' onclick=\'document.getElementById(\"popover-greenship\").style.display = \"none\"\'>✖️</button>"
+
+    // add all the approiate features for adding the content for the popup window
+    //container
+    modalParentContainer = document.createElement("div");
+    modalParentContainer.setAttribute("style","width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; margin: 0; font-family: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\"; font-weight: 400; line-height: 1.5; color: #212529; text-align: left;");
+      //first row
+      parentContainerChildTitleRow = document.createElement("div");
+      parentContainerChildTitleRow.setAttribute("style","    display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; padding-left: .25rem!important; padding-bottom: .25rem!important; padding-right: .25rem!important; padding-top: .25rem!important; background-color:#20B566!important; color: #fff!important;")
+        //font
+        parentContainerChildTitleRowChildFont = document.createElement("div")
+        parentContainerChildTitleRowChildFont.setAttribute("style","font-size:15px; padding-left: 20px;")
+          //image
+          titleImageElement = document.createElement("img"); 
+          titleImageElement.src = chrome.extension.getURL("https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/greenship.png");
+          titleImageElement.setAttribute("fill", "white")
+          titleImageElement.setAttribute("width", "20px")
+        
+        parentContainerChildTitleRowChildFont.appendChild(titleImageElement)
+        parentContainerChildTitleRowChildFont.innerHTML += "GreenShip"
+
+        parentContainerChildTitleRow.appendChild(parentContainerChildTitleRowChildFont)
+      
+      modalParentContainer.appendChild(parentContainerChildTitleRow)
+      
+      // next row
+      parentContainerChildTitleRow2 = document.createElement("div");
+      parentContainerChildTitleRow2.setAttribute("style","display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; padding-left: 1.5rem!important; padding-right: 1.5rem!important; padding-top: 1.5rem!important; ")
+        //h6
+        titleH6 = document.createElement("h6");
+        titleH6.setAttribute("style","font-weight: 400; text-transform: none; font-size:20px; margin-bottom: .5rem; font-family: inherit; font-weight: 500; line-height: 1.2; color: inherit;")
+        titleH6.innerHTML += "About to Buy Something?"
+        //h7
+        titleH7 = document.createElement("h7");
+        titleH7.setAttribute("style","font-size:14px; font-weight: 400; line-height: 1.5; color: #212529; text-align: left; padding-bottom: 1rem!important; padding-top: .5rem!important;")
+        titleH7.innerHTML += "Let\'s check out the environmental cost of your shipping options"
+        parentContainerChildTitleRow2.appendChild(titleH6)
+        parentContainerChildTitleRow2.appendChild(titleH7)
+      
+      modalParentContainer.appendChild(parentContainerChildTitleRow2)
+
+      savingsTableDiv = document.createElement("div");
+      savingsTableDiv.setAttribute("style","display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; padding-left: 1.5rem!important; padding-right: 1.5rem!important; padding-top: .5rem!important; background-color:#F3F3F3!important")
+
+      var emissions = deliveryOptionsArray
+
+      if(emissions != null) {
+        // Calculate Tree Variation Ratio
+        if (devmode) {
+          console.log(emissions);
+        }
     
-    modalDialogSiblingDiv = document.createElement("div");
-
-    modalDialogTextDiv = document.createElement("div"); 
-    modalDialogTextDiv.setAttribute("style" , "text-align:center");
+        var slowest_shipping_date = emissions[emissions.length-1].maximum_date
+        var fastest_shipping_date = emissions[0].minimum_date
+        var variation_ratio =  (slowest_shipping_date - fastest_shipping_date)/2;
     
-    // put elements that are currently in popupjs/popuphtml here
-    modalDialogTextSpan = document.createElement("span"); 
-    modalDialogText = document.createElement("strong"); 
-    modalDialogText.innerHTML = "Processing...  Please Wait.";
+        if(devmode) {
+          console.log("Slowest Ship Date: " + slowest_shipping_date)
+          console.log("Fastest Ship Date: " + fastest_shipping_date)
+        }
+    
+        for (var index = (emissions.length-1); index >= 0; index--  ) {
+    
+          if(emissions[index].delivery_type) {
+            // How to go from multiple images
+            
+            var content = document.createElement('div');
+            content.setAttribute('style', 'display: flex; padding-bottom: 6px; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; width: 450px!important;');
+    
+            // first column
+            var firstColumn = document.createElement('div');
+            firstColumn.setAttribute('style', 'position: relative; width: 100%; min-height: 1px; flex: 0 0 41.666667%; max-width: 41.666667%; padding-right: 0!important; padding-left: 15px;');
+            // first column text
+            var innerTextFirstColumn  = document.createElement('p');
+            innerTextFirstColumn.setAttribute('style', 'font-size: 14px; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; font-weight: 400; line-height: 1.5; color: #212529; text-align: left;');
+    
+            if(emissions[index].business_day_case == false) {
+              if(emissions[index].date_range != 0 ) {    
+                innerTextFirstColumn.innerHTML += emissions[index].delivery_type +" (" + emissions[index].minimum_date +"-"+ emissions[index].maximum_date+" days)";
+              }
+              else{
+                innerTextFirstColumn.innerHTML += emissions[index].delivery_type +" (" + emissions[index].minimum_date + " days)";
+              }
+            }
+            else{
+              if(emissions[index].date_range != 0 ) {    
+                innerTextFirstColumn.innerHTML += emissions[index].delivery_type +" (" + emissions[index].minimum_date +"-"+ emissions[index].maximum_date+" business days once shipped)";
+              }
+              else{
+                innerTextFirstColumn.innerHTML += emissions[index].delivery_type +" (" + emissions[index].minimum_date + " business days once shipped)";
+              }   
+            }
+            // another column for the amount of lbs per C02
+            var secondColumn = document.createElement('div');
+            secondColumn.setAttribute('style', 'position: relative; width: 100%; min-height: 1px; text-align: right; padding-left: 0!important; padding-right: 0!important; flex: 0 0 58.333333%; max-width: 58.333333%;');
+            var overflowFlag = false;
+            if(index == (emissions.length-1)){
+              var num_dead_trees = 1;
+            }
+            else{
+              num_dead_trees = (slowest_shipping_date - emissions[index].minimum_date)/2
+              
+              if(num_dead_trees > 9){
+                num_dead_trees = 9;
+                overflowFlag = true;
+              }
+            }
+            for(var i = 0; i < num_dead_trees; i++ ){
+              secondColumn.innerHTML += '<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/dead_tree.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
+            }
+            if(overflowFlag){
+              secondColumn.innerHTML += '<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/red-plus.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
+            }
+        
+            firstColumn.appendChild(innerTextFirstColumn);
+            content.appendChild(firstColumn);
+            content.appendChild(secondColumn);
+            savingsTableDiv.appendChild(content);
+          }
+        };
+        modalParentContainer.appendChild(savingsTableDiv);
+      }
+      if(emissions.length > 1){
+        // Emissions Suggestions
+        twoColumnContainer = document.createElement('div')
+        twoColumnContainer.setAttribute("style","padding-bottom: 1rem!important; padding-top: 1rem!important; height: 100%; width: 100%; display: flex; display: block;")
 
-    breakElement = document.createElement("br"); 
-    imageElement = document.createElement("img"); 
-    imageElement.src = chrome.extension.getURL("https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/amazon.png");
-
-    modalDialogTextSpan.appendChild(modalDialogText);
-    modalDialogTextDiv.appendChild(modalDialogTextSpan);
-    modalDialogTextDiv.appendChild(breakElement);
-    modalDialogTextDiv.appendChild(breakElement);
-    modalDialogTextDiv.appendChild(imageElement);
-
-    modalDialogSiblingDiv.appendChild(modalDialogTextDiv);
-    modalDialogParentDiv.appendChild(modalDialogSiblingDiv);
+          // left
+          leftSideContainer = document.createElement('div')
+          leftSideContainer.setAttribute("style","height: 100%; width:50px; flex-grow: 0; display:inline-block;")
+          leftSideContainer.innerHTML += '<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/leaf_icon.png" width="35px" >';
+          
+          // right
+          rightSideContainer = document.createElement('div')
+          rightSideContainer.setAttribute("style","height: 100%; min-width:250px; flex-grow: 1000; display:inline-block;")
+            
+            // inner blurb
+            var innerSuggestion = document.createElement('h7');
+            innerSuggestion.setAttribute('style', 'font-size:14px;font-weight: 400; line-height: 1.5; color: #212529; text-align: left; padding-bottom: 1rem!important; padding-top: .5rem!important;' );
+            innerSuggestion.innerHTML += 'Choosing "'+ emissions[0].delivery_type +'" will cause ' + variation_ratio + 'x the C02 emissions. That\'s like cutting down '+ variation_ratio + 'x as many trees to get your package sooner.';
+            rightSideContainer.appendChild(innerSuggestion);
+        
+        twoColumnContainer.appendChild(leftSideContainer);
+        twoColumnContainer.appendChild(rightSideContainer);
+        modalParentContainer.appendChild(twoColumnContainer);
+      }
+      else if (emissions.length == 1){
+        //TODO:: Blerb when there is just one 
+      }
+    modalDialogParentDiv.appendChild(modalParentContainer);
     wrapperDiv.appendChild(modalDialogParentDiv);
     document.body.appendChild(wrapperDiv);
     
