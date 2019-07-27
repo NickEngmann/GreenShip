@@ -102,9 +102,13 @@ function emissionsTable(emissions) {
       innerSuggestion.innerHTML += 'We can\'t compare something against itself but thanks for checking your impact either way!';
       emissionsSuggestion.appendChild(innerSuggestion);
     }
-    else{
-      console.log("No Emissions table so no blerb");
-    }
+    var disclaimerBlurb = document.getElementById('disclaimer-blurb');
+    disclaimerBlurb.setAttribute("style", "padding-right: .5rem!important; padding-left: .5rem!important;")
+    var disclaimer_text = "Just a heads up, we keep track of which shipping option you choose to know if we\’re making a difference. Don\’t worry, we don\’t track anything else, it\’s all anonymous.";
+    var disclaimerInner = document.createElement('p');
+    disclaimerInner.setAttribute('style', 'font-size:9px;line height: 11px; color: #737373;');
+    disclaimerInner.innerHTML += disclaimer_text;
+    disclaimerBlurb.appendChild(disclaimerInner);
   }
 
 }

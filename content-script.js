@@ -434,9 +434,15 @@ $().ready(() => {
         twoColumnContainer.appendChild(rightSideContainer);
         modalParentContainer.appendChild(twoColumnContainer);
       }
-      else {
-        console.log("No emissions table so no blerb");
-      }
+      disclaimerBlurb = document.createElement('div');
+      disclaimerBlurb.setAttribute("style", "padding-bottom: .5rem!important; padding-right: .5rem!important; padding-left: .5rem!important;")
+      var disclaimer_text = "Just a heads up, we keep track of which shipping option you choose to know if we\’re making a difference. Don\’t worry, we don\’t track anything else, it\’s all anonymous.";
+      var disclaimerInner = document.createElement('p');
+      disclaimerInner.setAttribute('style', 'font-size:9px;line height: 11px; color: #737373;');
+      disclaimerInner.innerHTML += disclaimer_text;
+      disclaimerBlurb.appendChild(disclaimerInner);
+      modalParentContainer.appendChild(disclaimerBlurb);
+
     modalDialogParentDiv.appendChild(modalParentContainer);
     wrapperDiv.appendChild(modalDialogParentDiv);
     document.body.appendChild(wrapperDiv);
