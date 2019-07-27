@@ -228,7 +228,7 @@ $().ready(() => {
       if (devmode) {
         console.log(obj);
       }
-      if(obj.delivery_type){
+      if(obj.delivery_type && obj.maximum_date){
         deliveryOptionsArray.push(obj);
       }
     }
