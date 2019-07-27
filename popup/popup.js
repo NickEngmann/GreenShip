@@ -69,14 +69,17 @@ function emissionsTable(emissions) {
             overflowFlag = true;
           }
         }
-        for(var i = 0; i < num_dead_trees; i++ ){
-          secondColumn.innerHTML += '<img src="../icons/dead_tree.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
+        if(num_dead_trees == 1) {
+          secondColumn.innerHTML += '<p style="padding-top: 5px;color: #20B566!important; font-size: 14px;">Greenship\'s Choice!</p>'
         }
-        if(overflowFlag){
-          secondColumn.innerHTML += '<img src="../icons/red-plus.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
-        }
-        
-    
+        else {
+          for(var i = 0; i < num_dead_trees; i++ ){
+            secondColumn.innerHTML += '<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/dead_tree.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
+          }
+          if(overflowFlag){
+            secondColumn.innerHTML += '<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/red-plus.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
+          }
+        } 
         firstColumn.appendChild(innerTextFirstColumn);
         content.appendChild(firstColumn);
         content.appendChild(secondColumn);

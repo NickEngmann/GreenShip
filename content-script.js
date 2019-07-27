@@ -263,10 +263,11 @@ $().ready(() => {
           titleImageElement = document.createElement("img"); 
           titleImageElement.src = chrome.extension.getURL("https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/greenship-brand.png");
           titleImageElement.setAttribute("fill", "white")
-          titleImageElement.setAttribute("width", "20px")
+          titleImageElement.setAttribute("width", "100px")
+          titleImageElement.setAttribute("style","padding-top: 5px;")
         
         parentContainerChildTitleRowChildFont.appendChild(titleImageElement)
-        parentContainerChildTitleRowChildFont.innerHTML += "GreenShip"
+        // parentContainerChildTitleRowChildFont.innerHTML += "GreenShip"
 
         parentContainerChildTitleRow.appendChild(parentContainerChildTitleRowChildFont)
       
@@ -349,18 +350,22 @@ $().ready(() => {
             else{
               num_dead_trees = (slowest_shipping_date - emissions[index].minimum_date)/2
               
-              if(num_dead_trees > 9){
+              if(num_dead_trees > 9) {
                 num_dead_trees = 9;
                 overflowFlag = true;
               }
             }
-            for(var i = 0; i < num_dead_trees; i++ ){
-              secondColumn.innerHTML += '<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/dead_tree.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
+            if(num_dead_trees == 1) {
+              secondColumn.innerHTML += '<p style="padding-top: 5px;color: #20B566!important; font-size: 14px;">Greenship\'s Choice!</p>'
             }
-            if(overflowFlag){
-              secondColumn.innerHTML += '<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/red-plus.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
+            else {
+              for(var i = 0; i < num_dead_trees; i++ ){
+                secondColumn.innerHTML += '<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/dead_tree.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
+              }
+              if(overflowFlag){
+                secondColumn.innerHTML += '<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/red-plus.png" width="25px" style="padding-left: 1px;padding-right: 1px;" >';
+              }
             }
-        
             firstColumn.appendChild(innerTextFirstColumn);
             content.appendChild(firstColumn);
             content.appendChild(secondColumn);
@@ -372,12 +377,12 @@ $().ready(() => {
       if(emissions.length > 1){
         // Emissions Suggestions
         twoColumnContainer = document.createElement('div')
-        twoColumnContainer.setAttribute("style","padding-bottom: 1rem!important; padding-top: 1rem!important; height: 100%; width: 100%; display: flex; display: block;")
+        twoColumnContainer.setAttribute("style","padding-bottom: 1rem!important; padding-top: 1rem!important; height: 100%; width: 100%; display: flex;")
 
           // left
           leftSideContainer = document.createElement('div')
           leftSideContainer.setAttribute("style","height: 100%; width:50px; flex-grow: 0; display:inline-block;")
-          leftSideContainer.innerHTML += '<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/leaf_icon.png" width="35px" >';
+          leftSideContainer.innerHTML += '<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/leaf_icon.png" width="35px" style="max-width: none;">';
           
           // right
           rightSideContainer = document.createElement('div')
