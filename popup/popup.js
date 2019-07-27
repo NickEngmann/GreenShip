@@ -88,12 +88,23 @@ function emissionsTable(emissions) {
     };
 
     // Final blurb text
-    var emissionsSuggestion = document.getElementById('final-blurb');
-    var innerSuggestion = document.createElement('h7');
-    innerSuggestion.setAttribute('class', 'text-standard');
-    innerSuggestion.innerHTML += 'Choosing "'+ emissions[0].delivery_type +'" will cause ' + variation_ratio + 'x the C02 emissions. That\'s like cutting down '+ variation_ratio + 'x as many trees to get your package sooner.';
-    emissionsSuggestion.appendChild(innerSuggestion);
-    
+    if(emissions.length > 1){
+      var emissionsSuggestion = document.getElementById('final-blurb');
+      var innerSuggestion = document.createElement('h7');
+      innerSuggestion.setAttribute('class', 'text-standard');
+      innerSuggestion.innerHTML += 'Choosing "'+ emissions[0].delivery_type +'" will cause ' + variation_ratio + 'x the C02 emissions. That\'s like cutting down '+ variation_ratio + 'x as many trees to get your package sooner.';
+      emissionsSuggestion.appendChild(innerSuggestion);
+    }
+    if(emissions.length == 1){
+      var emissionsSuggestion = document.getElementById('final-blurb');
+      var innerSuggestion = document.createElement('h7');
+      innerSuggestion.setAttribute('class', 'text-standard');
+      innerSuggestion.innerHTML += 'We can\'t compare something against itself but thanks for checking your impact either way!';
+      emissionsSuggestion.appendChild(innerSuggestion);
+    }
+    else{
+      console.log("No Emissions table so no blerb");
+    }
   }
 
 }

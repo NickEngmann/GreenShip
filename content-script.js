@@ -237,7 +237,9 @@ $().ready(() => {
     }
     chrome.runtime.sendMessage({ deliveryOptionsArray});
 
-    // Embed Modal
+    var emissions = deliveryOptionsArray
+
+    // Embedded Modal
     wrapperDiv = document.createElement("div");
     wrapperDiv.setAttribute("id","iframe-wrapper");
     wrapperDiv.setAttribute("style","position: absolute; left: 0px; top: 0px; z-index: 2000; height: 1083px; width: 100%;");
@@ -276,6 +278,7 @@ $().ready(() => {
       // next row
       parentContainerChildTitleRow2 = document.createElement("div");
       parentContainerChildTitleRow2.setAttribute("style","display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; padding-left: 1.5rem!important; padding-right: 1.5rem!important; padding-top: 1.5rem!important; ")
+      if(emissions.length != 1){
         //h6
         titleH6 = document.createElement("h6");
         titleH6.setAttribute("style","font-weight: 400; text-transform: none; font-size:20px; margin-bottom: .5rem; font-family: inherit; font-weight: 500; line-height: 1.2; color: inherit;")
@@ -286,13 +289,22 @@ $().ready(() => {
         titleH7.innerHTML += "Let\'s check out the environmental cost of your shipping options"
         parentContainerChildTitleRow2.appendChild(titleH6)
         parentContainerChildTitleRow2.appendChild(titleH7)
-      
+      }
+      else if (emissions.length == 1) {
+          //h6
+          titleH6 = document.createElement("h6");
+          titleH6.setAttribute("style","font-weight: 400; text-transform: none; font-size:20px; margin-bottom: .5rem; font-family: inherit; font-weight: 500; line-height: 1.2; color: inherit;")
+          titleH6.innerHTML += "Looks like you only have one shipping option..."
+          parentContainerChildTitleRow2.appendChild(titleH6)
+      }
+      else{
+        console.log("No emissions table Found")
+      }
       modalParentContainer.appendChild(parentContainerChildTitleRow2)
 
       savingsTableDiv = document.createElement("div");
       savingsTableDiv.setAttribute("style","display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; padding-left: 1.5rem!important; padding-right: 1.5rem!important; padding-top: .5rem!important; background-color:#F3F3F3!important")
 
-      var emissions = deliveryOptionsArray
 
       if(emissions != null) {
         // Calculate Tree Variation Ratio
@@ -399,7 +411,31 @@ $().ready(() => {
         modalParentContainer.appendChild(twoColumnContainer);
       }
       else if (emissions.length == 1){
-        //TODO:: Blerb when there is just one 
+        // Emissions Suggestions
+        twoColumnContainer = document.createElement('div')
+        twoColumnContainer.setAttribute("style","padding-bottom: 1rem!important; padding-top: 1rem!important; height: 100%; width: 100%; display: flex;")
+
+          // left
+          leftSideContainer = document.createElement('div')
+          leftSideContainer.setAttribute("style","height: 100%; width:50px; flex-grow: 0; display:inline-block;")
+          leftSideContainer.innerHTML += '<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/icons/leaf_icon.png" width="35px" style="max-width: none;">';
+          
+          // right
+          rightSideContainer = document.createElement('div')
+          rightSideContainer.setAttribute("style","height: 100%; min-width:250px; flex-grow: 1000; display:inline-block;")
+            
+            // inner blerb
+            var innerSuggestion = document.createElement('h7');
+            innerSuggestion.setAttribute('style', 'font-size:14px;font-weight: 400; line-height: 1.5; color: #212529; text-align: left; padding-bottom: 1rem!important; padding-top: .5rem!important;' );
+            innerSuggestion.innerHTML += 'We can\'t compare something against itself but thanks for checking your impact either way!';
+            rightSideContainer.appendChild(innerSuggestion);
+        
+        twoColumnContainer.appendChild(leftSideContainer);
+        twoColumnContainer.appendChild(rightSideContainer);
+        modalParentContainer.appendChild(twoColumnContainer);
+      }
+      else {
+        console.log("No emissions table so no blerb");
       }
     modalDialogParentDiv.appendChild(modalParentContainer);
     wrapperDiv.appendChild(modalDialogParentDiv);
