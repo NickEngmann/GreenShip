@@ -207,7 +207,16 @@ $().ready(() => {
             }
           }
           else {
-            delivery_type = "Free No-Rush Shipping"
+            var noRushShipping = /[\r\n](.*)[\r\n]?/gm;
+            var deliveryNoRush = innerText.match(noRushShipping);
+            if(devmode) {
+              console.log("No Rush Delivery Catch")
+              console.log(deliveryNoRush);
+            }
+            if(deliveryNoRush) {
+              console.log(deliveryNoRush[0]);
+              delivery_type = deliveryNoRush[0].slice(1,deliveryNoRush[0].length);
+            }
           }
         }
         else{
