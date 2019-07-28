@@ -40,7 +40,12 @@ $().ready(() => {
         console.log("Dates:")
         console.log(dates);
       }
-      if(dates =="Tomorrow"){
+      if(dates =="Today") {
+        var minimum_date = 0;
+        var maximum_date = 0;
+        var date_range = 0;   
+      }
+      else if(dates =="Tomorrow") {
         var minimum_date = 1;
         var maximum_date = 1;
         var date_range = 0;   
@@ -61,6 +66,9 @@ $().ready(() => {
           }
           if(monthArray != null) {
             if(monthArray.length == 2){
+              if(devmode){
+                console.log("2 month case:")
+              }
               var minimumMonth = dateConverter[monthArray[0].slice(0, -1)]
               var maximumMonth = dateConverter[monthArray[1].slice(0, -1)]
               if (devmode) {
@@ -154,16 +162,19 @@ $().ready(() => {
       }
 
       try {
-        var everything = innerDOM[index].childNodes[1].innerText
+        var innerText = innerDOM[index].childNodes[1].innerText
       }
       catch(error){
-        var everything = undefined;
+        var innerText = undefined;
         var onlyDelivery = undefined;
       }
 
-      if(everything) {
+      if(innerText) {
+        if(devmode) {
+          console.log(innerText)
+        }
         var noDatesRe = /[$](.*)/gm;
-        var noDatesArray = everything.match(noDatesRe);
+        var noDatesArray = innerText.match(noDatesRe);
         if(noDatesArray){
           var noDates = noDatesArray[0].toString();
           var onlyMoneyRe = /^[$]+[0-9]+(\.[0-9]{1,2})?/gm;
@@ -179,7 +190,7 @@ $().ready(() => {
         if(noDatesArray) {
           var onlyDelivery = /\-(.*)?/gm;
           var onlyDeliveryArray = noDates.match(onlyDelivery);
-
+          
           if(onlyDeliveryArray) {
             var onlyDelivery = onlyDeliveryArray[0].substr(2);
             if (devmode) {
@@ -188,17 +199,20 @@ $().ready(() => {
             // check for Tracking info
             var trackingCheck = /^(.*)\-/gm;
             var noTrackingCheck = onlyDelivery.match(trackingCheck);
-            if(noTrackingCheck){
+            if(noTrackingCheck) {
               delivery_type = noTrackingCheck[0].slice(0, -2);
               if (devmode) {
                 console.log(onlyDelivery);
               }
             }
-          };
+          }
+          else {
+            delivery_type = "Free No-Rush Shipping"
+          }
         }
         else{
           var noDatesRe = /\n.*/gm;
-          var deliveryPrimeArray = everything.match(noDatesRe);
+          var deliveryPrimeArray = innerText.match(noDatesRe);
           // 
           if(deliveryPrimeArray){
             var delivery_type = deliveryPrimeArray[0].slice(1);
