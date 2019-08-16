@@ -59,4 +59,4 @@ This project is [MIT licensed](./LICENSE.md).
 
 [Anu Jayasinghe](https://anujaya.com)
 [Nick Engmann](https://nickengmann.com)
-[Nate Reicher]()
+[Nate Reicher](https://www.linkedin.com/in/nate-reicher-81713116a/)
