@@ -2,12 +2,13 @@
 <p align="center">
   <img src="./imgs/Chrome_Store-small_title.png" width="250px"/>
 </p>
-
 Discover how you can reduce your carbon footprint by choosing different shipping option. 
 
 Check us out on the [Chrome Store Now!](https://chrome.google.com/webstore/detail/greenship/njeakmnnedingkbbihcmbaaopflnhadj)
 
 Also check out our [demo video!](https://youtu.be/JYcEX5uEMWc)
+
+<a href="https://twitter.com/getgreenship"><img src="https://raw.githubusercontent.com/abraham/twitteroauth-demo/master/images/twitter-logo-blue.png" width="25px"/>Check us out on Twitter!</a>
 
 ## How to Use GreenShip
 
