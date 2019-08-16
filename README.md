@@ -47,3 +47,7 @@ Check us out on the [Chrome Store Now!](https://chrome.google.com/webstore/detai
 
 6. Users are ready to run the extension
 
+
+# License
+
+This project is [MIT licensed](./LICENSE.md).
