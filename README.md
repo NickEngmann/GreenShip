@@ -7,6 +7,8 @@ Discover how you can reduce your carbon footprint by choosing different shipping
 
 Check us out on the [Chrome Store Now!](https://chrome.google.com/webstore/detail/greenship/njeakmnnedingkbbihcmbaaopflnhadj)
 
+Also check out our [demo video!](https://youtu.be/JYcEX5uEMWc)
+
 ## How to Use GreenShip
 
 1. Shop like normal
