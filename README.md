@@ -54,3 +54,9 @@ Also check out our [demo video!](https://youtu.be/JYcEX5uEMWc)
 # License
 
 This project is [MIT licensed](./LICENSE.md).
+
+# Contributors:
+
+[Anu Jayasinghe](https://anujaya.com)
+[Nick Engmann](https://nickengmann.com)
+[Nate Reicher]()
