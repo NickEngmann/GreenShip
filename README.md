@@ -1,5 +1,7 @@
 
-<center><img src="./imgs/Chrome_Store-small_title.png" width="250px"/></center>
+<p align="center">
+  <img src="./imgs/Chrome_Store-small_title.png" width="250px"/>
+</p>
 
 Discover how you can reduce your carbon footprint by choosing different shipping option. 
 
@@ -11,13 +13,17 @@ Check us out on the [Chrome Store Now!](https://chrome.google.com/webstore/detai
 
 2. On the checkout page you will be presented with the a Greenship modal. This will tell you about the environmental impact of your shipping decisions.
 
-<center><img src="./imgs/Hero_Image-in_context.png" width="600px"/></center>
+<p align="center">
+  <img src="./imgs/Hero_Image-in_context.png" width="600px"/>
+</p>
 
 3. Click anywhere on the screen for the Greenship modal to dissapear.
 
 4. Want to see the information again? Click on the GreenShip Logo in the top right hand corner
-<center><img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/greenship.png" width="400px"/></center>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/greenship.png" width="400px"/>
+</p>
 
 ## How to Install in Dev Mode
 
@@ -35,7 +41,9 @@ Check us out on the [Chrome Store Now!](https://chrome.google.com/webstore/detai
 
 5. Click the Load Unpacked button and select the folder where users saved the extension.
 
-![](https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/loadunpacked.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/loadunpacked.png"/>
+</p>
 
 6. Users are ready to run the extension
 
