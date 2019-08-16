@@ -18,25 +18,28 @@ var dateConverterFull = {
 }
 
 $().ready(() => {      
-    var devmode = true;
+    var devmode = false;
     var parentDOM = document.getElementById("spc-orders");
     var innerDOM = parentDOM.getElementsByClassName("a-radio-label");
     today = new Date();
-
+    if(devmode){
+      console.log("innerDOM")
+      console.log(innerDOM)
+    }
     for( var index = 0; index < innerDOM.length; index++ ) {
       var business_day_case = false;
-      if (devmode){
+      if (devmode) {
         console.log(index)
       }
       try {
-        var dates = innerDOM[index].childNodes[0].nextElementSibling.childNodes[1].innerText;
+        var dates = innerDOM[index].innerText;
       }
       catch(error) {
         var dates = undefined;
         var minimum_date = undefined;
         var maximum_date = undefined;
       }
-      if (devmode){
+      if (devmode) {
         console.log("Dates:")
         console.log(dates);
       }
@@ -230,7 +233,7 @@ $().ready(() => {
             }
           }
           else{
-            var delivery_type = undefined;
+            var delivery_type = "Standard Shipping";
           }
         }
 
@@ -258,6 +261,7 @@ $().ready(() => {
     if(devmode){
       console.log(deliveryOptionsArray);
     }
+    
     chrome.runtime.sendMessage({ deliveryOptionsArray});
 
     var emissions = deliveryOptionsArray
@@ -334,11 +338,22 @@ $().ready(() => {
         if (devmode) {
           console.log(emissions);
         }
-    
+
         var slowest_shipping_date = emissions[emissions.length-1].maximum_date
         var fastest_shipping_date = emissions[0].minimum_date
-        var variation_ratio =  (slowest_shipping_date - fastest_shipping_date)/2;
-    
+        if(fastest_shipping_date < slowest_shipping_date){
+          var variation_ratio =  (slowest_shipping_date - fastest_shipping_date)/2;
+        }
+
+        else {
+          //emissions array is not ordered from slowest to fastest
+
+          emissions = emissions.sort((a,b) => a.minimum_date - b.minimum_date );
+          slowest_shipping_date = emissions[emissions.length-1].maximum_date
+          fastest_shipping_date = emissions[0].minimum_date
+          variation_ratio =  (slowest_shipping_date - fastest_shipping_date)/2;
+        }
+
         if(devmode) {
           console.log("Slowest Ship Date: " + slowest_shipping_date)
           console.log("Fastest Ship Date: " + fastest_shipping_date)
@@ -348,17 +363,16 @@ $().ready(() => {
     
           if(emissions[index].delivery_type) {
             // How to go from multiple images
-            
             var content = document.createElement('div');
             content.setAttribute('style', 'display: flex; padding-bottom: 6px; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; width: 450px!important;');
     
             // first column
             var firstColumn = document.createElement('div');
             firstColumn.setAttribute('style', 'position: relative; width: 100%; min-height: 1px; flex: 0 0 41.666667%; max-width: 41.666667%; padding-right: 0!important; padding-left: 15px;');
+            
             // first column text
             var innerTextFirstColumn  = document.createElement('p');
             innerTextFirstColumn.setAttribute('style', 'font-size: 14px; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; font-weight: 400; line-height: 1.5; color: #212529; text-align: left;');
-    
             if(emissions[index].business_day_case == false) {
               if(emissions[index].date_range != 0 ) {    
                 innerTextFirstColumn.innerHTML += emissions[index].delivery_type +" (" + emissions[index].minimum_date +"-"+ emissions[index].maximum_date+" days)";
@@ -409,6 +423,7 @@ $().ready(() => {
         };
         modalParentContainer.appendChild(savingsTableDiv);
       }
+
       if(emissions.length > 1){
         // Emissions Suggestions
         twoColumnContainer = document.createElement('div')
@@ -433,6 +448,7 @@ $().ready(() => {
         twoColumnContainer.appendChild(rightSideContainer);
         modalParentContainer.appendChild(twoColumnContainer);
       }
+
       else if (emissions.length == 1){
         // Emissions Suggestions
         twoColumnContainer = document.createElement('div')
@@ -457,6 +473,7 @@ $().ready(() => {
         twoColumnContainer.appendChild(rightSideContainer);
         modalParentContainer.appendChild(twoColumnContainer);
       }
+
       disclaimerBlurb = document.createElement('div');
       disclaimerBlurb.setAttribute("style", "padding-bottom: .5rem!important; padding-right: .5rem!important; padding-left: .5rem!important;")
       var disclaimer_text = "Just a heads up, we keep track of which shipping option you choose to know if we\’re making a difference. Don\’t worry, we don\’t track anything else, it\’s all anonymous.";

@@ -1,22 +1,24 @@
-const devmode = true;
+const devmode = false;
 var manifest = chrome.runtime.getManifest();
 var appName = manifest.name;
 var appVersion = manifest.version;
 
-//running on app reload
 chrome.runtime.onInstalled.addListener(function () {
+    console.log(appName + " " + appVersion + " is loaded.");
     if (devmode) {
-        console.log(appName + " " + appVersion + " is reloaded.");
         console.log("Nick Engmann sends his regards.");
+        console.log("Source @ https://github.com/NickEngmann/GreenShip");
+        console.log("Check out my stuff @ https://nickengmann.com");
     }
 });
 
+
 chrome.runtime.onMessage.addListener(function (message) {
-    console.log("runTime On Request");
+    // Save emissions table in local storage for the icon window popup
     chrome.storage.local.set({'emissionsTable': message });
 });
 
-/* request to toggle slider whenever browser icon clicked
+/* Request to toggle slider whenever browser icon clicked
  */
 chrome.browserAction.onClicked.addListener(function () {
     chrome.tabs.query({
@@ -27,5 +29,4 @@ chrome.browserAction.onClicked.addListener(function () {
             todo: "toggle"
         });
     })
-    console.log("browserAction on click");
 });

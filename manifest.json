@@ -1,4 +1,4 @@
-{
+{ 
     "background": {
        "scripts": [ "background.js" ]
     },
@@ -14,7 +14,7 @@
     },
     "content_scripts": [ {
        "all_frames": false,
-       "js": [ "jquery-3.4.1.min.js", "./content-script.js", "./popup/popup.js", "./modal/modal.js" ],
+       "js": [ "jquery-3.4.1.min.js", "./content-script.js", "./popup/popup.js" ],
        "match_about_blank": false,
        "matches": [ "https://www.amazon.com/gp/buy/spc/handlers/*" ],
        "run_at": "document_end"
@@ -28,8 +28,8 @@
     },
     "manifest_version": 2,
     "name": "GreenShip",
-    "permissions": [ "cookies", "tabs", "debugger", "storage", "unlimitedStorage", "webRequest", "webRequestBlocking", "https://www.amazon.com/*", "http://www.amazon.com/*" ],
-    "version": "1.1.8",
+    "permissions": [ "cookies", "tabs", "storage", "unlimitedStorage", "webRequest", "webRequestBlocking", "https://www.amazon.com/*", "http://www.amazon.com/*" ],
+    "version": "2.0.0",
     "web_accessible_resources": [ "images/*", "css/*", "fonts/*", "imgs/*", "ga.js" ]
  }
  
