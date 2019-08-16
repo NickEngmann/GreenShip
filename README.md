@@ -1,30 +1,41 @@
-# GreenShip
+
+<center><img src="./imgs/Chrome_Store-small_title.png" width="250px"/></center>
+
 Discover how you can reduce your carbon footprint by choosing different shipping option. 
 
-## How to Install
+Check us out on the [Chrome Store Now!](https://chrome.google.com/webstore/detail/greenship/njeakmnnedingkbbihcmbaaopflnhadj)
+
+## How to Use GreenShip
+
+1. Shop like normal
+
+2. On the checkout page you will be presented with the a Greenship modal. This will tell you about the environmental impact of your shipping decisions.
+
+<center><img src="./imgs/Hero_Image-in_context.png" width="600px"/></center>
+
+3. Click anywhere on the screen for the Greenship modal to dissapear.
+
+4. Want to see the information again? Click on the GreenShip Logo in the top right hand corner
+<center><img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/greenship.png" width="400px"/></center>
+
+
+## How to Install in Dev Mode
+
 1. Download this Extension as a Zip file [here](https://github.com/NickEngmann/GreenShip/archive/master.zip).
+
 2. Unzip the Extension (GreenShip.zip -> Greenship Folder)
+
 3. Open Google Chrome Browser and open the Extension Management page by navigating to chrome://extensions in a Chrome browser.
 
 ![](https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/chrome.png)
 
 4. Enable Developer Mode by clicking toggle button/switch next to Developer Mode.  
+
 ![](https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/devmode.png)
 
-5. Click the Load Unpacked button and select the folder where users saved the extension. 
+5. Click the Load Unpacked button and select the folder where users saved the extension.
+
 ![](https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/loadunpacked.png)
 
 6. Users are ready to run the extension
 
-## How to Use GreenShip
-Prerequisite for running the extension: Enter/Open Amazon.com
-Also this is currently only working on Prime Amazon accounts
-
-### The Following are the steps:
-1. On the checkout page fill out all the appropriate information
-
-<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/amazon.png" width="600px"/>
-
-2. Refresh the page before confirming the checkout
-3. Click on the GreenShip Logo in the top right hand corner
-<img src="https://raw.githubusercontent.com/NickEngmann/GreenShip/master/imgs/greenship.png" width="400px"/>
