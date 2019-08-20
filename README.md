@@ -60,6 +60,6 @@ This project is [MIT licensed](./LICENSE.md).
 
 # Contributors:
 
-[Anu Jayasinghe](https://anujaya.com)
-[Nick Engmann](https://nickengmann.com)
-[Nate Reicher](https://www.linkedin.com/in/nate-reicher-81713116a/)
+- [Anu Jayasinghe](https://anujaya.com)
+- [Nick Engmann](https://nickengmann.com)
+- [Nate Reicher](https://www.linkedin.com/in/nate-reicher-81713116a/)
